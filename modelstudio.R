@@ -27,13 +27,13 @@ model <- ranger(score~., data = happiness)
 modelr <- DALEX::explain(model, data = happiness[,-1], y = happiness$score)
 
 # small
-ms <- modelStudio(modelr, happiness[c("Poland","Finland","Germany"),])
-new_ms <- ms_update_options(ms, margin_left = 220)
-new_ms
+ms <- modelStudio(modelr, happiness[c("Poland","Finland","Germany"),],
+                  options = ms_options(margin_left = 220))
+ms
 
 # large
-ms <- modelStudio(modelr, happiness)
-new_ms <- ms_update_options(ms, margin_left = 220, ms_title = "What makes you happy? (country level)")
-new_ms
+ms <- modelStudio(modelr, happiness,
+                  options = ms_options(margin_left = 220,
+                                       ms_title = "What makes you happy? (country level)"))
 
-r2d3::save_d3_html(new_ms, file = "index.html")
+r2d3::save_d3_html(ms, file = "index.html")
