@@ -2,6 +2,10 @@
 
 XAI use case based on world-happiness data.
 
+Find a live demo: https://pbiecek.github.io/xai-happiness/
+
+![modelStudio](modelStudio.png)
+
 ## What factors correlate with happiness at national level?
 
 1. Get data about happiness from 
