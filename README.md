@@ -15,7 +15,7 @@ https://www.kaggle.com/unsdsn/world-happiness
 
 3. Explain the model with [modelStudio](https://github.com/ModelOriented/modelStudio)
 
-```
+```r
 library("DALEX")
 library("modelStudio")
 library("ranger")
@@ -28,8 +28,8 @@ model <- ranger(score~., data = happiness)
 modelr <- explain(model, data = happiness[,-1], y = happiness$score)
 
 # get model studio
-ms <- modelStudio(modelr, happiness[c("Poland","Finland","Germany"),])
-new_ms <- ms_update_options(ms, margin_left = 220)
-new_ms
+ms <- modelStudio(modelr, happiness[c("Poland","Finland","Germany"),],
+                  options = ms_options(margin_left = 220))
+ms
 ```
 
