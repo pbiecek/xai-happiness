@@ -12,7 +12,7 @@ library("modelStudio")
 happiness <- read.table("2019.csv", sep = ",", header = TRUE)
 
 row.names(happiness) <- happiness[,2]
-happiness <- happiness[,-(1:2)]
+happiness <- happiness[order(row.names(happiness)),-(1:2)]
 
 col_names <- names(happiness)
 col_names <- tolower(col_names)
@@ -32,7 +32,10 @@ ms <- modelStudio(modelr, happiness[c("Poland","Finland","Germany"),],
 ms
 
 # large
-ms <- modelStudio(modelr, happiness,
+
+ms <- modelStudio(modelr,
+                  new_observation = rbind(happiness['Poland',], happiness),
+                  new_observation_y = rbind(happiness['Poland',], happiness)$score,
                   options = ms_options(margin_left = 220,
                                        ms_title = "What makes you happy? (country level)"))
 
