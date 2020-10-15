@@ -19,6 +19,7 @@ col_names <- tolower(col_names)
 col_names <- lapply(strsplit(col_names, "[.]"), paste, collapse  ="_")
 colnames(happiness) <- col_names
 
+# write.csv(happiness, "happiness.csv")
 saveRDS(happiness, file = "happiness.rds")
 
 happiness <- readRDS("happiness.rds")
